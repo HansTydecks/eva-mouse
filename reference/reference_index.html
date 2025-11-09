@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EVA-Prinzip: Mikrofon → Bildschirm</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+
+        <main class="main-content">
+            <!-- Dominant Visualization Area -->
+            <div class="visualization-container">
+                <canvas id="visualizer" width="1000" height="500"></canvas>
+                <div class="target-line" id="targetLine"></div>
+                <div class="success-message" id="successMessage">
+                    🎉 Geschafft!
+                </div>
+            </div>
+
+            <!-- Minimal Controls -->
+            <div class="controls">
+                <button id="startStopBtn" class="control-btn">Start</button>
+                <div class="mic-status" id="micStatus">Bereit</div>
+            </div>
+
+            <!-- Mission Box -->
+            <div class="mission-box">
+                <div class="byte-companion" id="byteCompanion">
+                    <div class="byte-circle">
+                        <img class="byte-character" id="byteCharacter" src="Byte_mascot/Byte_normal.png" alt="Byte">
+                    </div>
+                </div>
+                <div class="mission-text">
+                    <h3 id="missionTitle">Mission: Singe ein C!</h3>
+                    <p id="missionDescription">Triff die rote Linie und halte den Ton für 1,5 Sekunden</p>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

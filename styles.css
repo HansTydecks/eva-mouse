@@ -1,0 +1,398 @@
+/* Reset and Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #0d1f1a 0%, #1a3a2e 50%, #1e4d3a 100%);
+    min-height: 100vh;
+    color: #ffffff;
+}
+
+.container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Main Content Layout */
+.main-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+    justify-content: center;
+    gap: 20px;
+}
+
+/* Timer Display */
+.timer-display {
+    background: linear-gradient(135deg, #1e3a30 0%, #2d4a3e 100%);
+    padding: 15px 30px;
+    border-radius: 12px;
+    border: 2px solid #3d9970;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+    text-align: center;
+}
+
+.timer-label {
+    font-size: 0.9rem;
+    color: #a8d5ba;
+    margin-bottom: 5px;
+}
+
+.timer-value {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #3d9970;
+    font-family: 'Courier New', monospace;
+}
+
+/* Game Container */
+.game-container {
+    width: 90vw;
+    max-width: 900px;
+    background: #1a2e26;
+    border-radius: 20px;
+    padding: 30px;
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.5);
+    border: 2px solid #2d4a3e;
+}
+
+/* Memory Grid */
+.memory-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: repeat(5, 1fr);
+    gap: 12px;
+    max-width: 720px;
+    margin: 0 auto;
+}
+
+/* Memory Card */
+.memory-card {
+    aspect-ratio: 1;
+    background: linear-gradient(135deg, #1e3a30 0%, #2d4a3e 100%);
+    border: 3px solid #2d4a3e;
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2.5rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.memory-card::before {
+    content: '?';
+    position: absolute;
+    font-size: 3rem;
+    color: #3d9970;
+    font-weight: bold;
+}
+
+.memory-card.selected {
+    border-color: #3d9970;
+    box-shadow: 0 0 20px rgba(61, 153, 112, 0.6);
+    transform: scale(1.05);
+}
+
+.memory-card.flipped {
+    background: linear-gradient(135deg, #3d9970 0%, #2d7a56 100%);
+    border-color: #52b788;
+}
+
+.memory-card.flipped::before {
+    content: '';
+}
+
+.memory-card.matched {
+    background: linear-gradient(135deg, #52b788 0%, #40916c 100%);
+    border-color: #74c69d;
+    animation: match-pulse 0.6s ease-in-out;
+}
+
+.memory-card.matched::before {
+    content: '';
+}
+
+.memory-card.wrong {
+    animation: shake 0.5s ease-in-out;
+}
+
+.card-icon {
+    font-size: 3rem;
+    display: none;
+}
+
+.memory-card.flipped .card-icon,
+.memory-card.matched .card-icon {
+    display: block;
+}
+
+@keyframes match-pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+}
+
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-10px); }
+    75% { transform: translateX(10px); }
+}
+
+/* Controls */
+.controls {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.control-btn {
+    padding: 12px 25px;
+    border: 2px solid #3d9970;
+    border-radius: 20px;
+    background: linear-gradient(45deg, #3d9970, #2d7a56);
+    color: white;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 1rem;
+}
+
+.control-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(61, 153, 112, 0.4);
+    border-color: #52b788;
+}
+
+.control-btn:active {
+    transform: translateY(0);
+}
+
+.control-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.game-status {
+    font-size: 0.9rem;
+    color: #a8d5ba;
+    font-weight: 500;
+}
+
+/* Mission Box */
+.mission-box {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    background: linear-gradient(135deg, #1e3a30 0%, #2d4a3e 100%);
+    padding: 15px 25px;
+    border-radius: 12px;
+    border: 2px solid #3d9970;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+/* Byte Companion */
+.byte-companion {
+    position: relative;
+}
+
+.byte-circle {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #3d9970, #2d7a56);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 3px solid #52b788;
+    box-shadow: 0 4px 12px rgba(61, 153, 112, 0.3);
+    transition: all 0.5s ease;
+}
+
+.byte-character {
+    width: 3rem;
+    height: 3rem;
+    object-fit: contain;
+    transition: all 0.3s ease;
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
+}
+
+/* Byte Happy State */
+.byte-companion.happy .byte-circle {
+    background: linear-gradient(135deg, #52b788, #40916c);
+    border-color: #74c69d;
+    box-shadow: 0 4px 15px rgba(82, 183, 136, 0.5);
+    animation: byte-bounce 0.6s ease-in-out;
+}
+
+.byte-companion.happy .byte-character {
+    transform: scale(1.2);
+}
+
+@keyframes byte-bounce {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.15); }
+}
+
+.mission-text h3 {
+    margin: 0;
+    color: #ffffff;
+    font-size: 1.1rem;
+    font-weight: 600;
+}
+
+.mission-text p {
+    margin: 2px 0 0 0;
+    color: #a8d5ba;
+    font-size: 0.9rem;
+    line-height: 1.3;
+}
+
+/* Modal Overlay */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.85);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+}
+
+.modal-content {
+    background: linear-gradient(135deg, #1e3a30 0%, #2d4a3e 100%);
+    padding: 40px 60px;
+    border-radius: 20px;
+    border: 3px solid #3d9970;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+    text-align: center;
+}
+
+.modal-content h2 {
+    color: #ffffff;
+    font-size: 2rem;
+    margin-bottom: 20px;
+}
+
+.modal-timer {
+    margin-top: 20px;
+}
+
+.modal-timer-value {
+    font-size: 4rem;
+    font-weight: bold;
+    color: #3d9970;
+    font-family: 'Courier New', monospace;
+    margin-bottom: 10px;
+}
+
+.modal-timer-text {
+    font-size: 1.2rem;
+    color: #a8d5ba;
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+    .game-container {
+        width: 95vw;
+    }
+    
+    .memory-grid {
+        gap: 10px;
+    }
+    
+    .memory-card {
+        font-size: 2rem;
+    }
+    
+    .card-icon {
+        font-size: 2.5rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .container {
+        padding: 10px;
+    }
+    
+    .game-container {
+        width: 98vw;
+        padding: 20px;
+    }
+    
+    .memory-grid {
+        gap: 8px;
+    }
+    
+    .memory-card {
+        font-size: 2rem;
+    }
+    
+    .card-icon {
+        font-size: 2.5rem;
+    }
+    
+    .mission-box {
+        flex-direction: column;
+        text-align: center;
+        gap: 10px;
+        padding: 12px 20px;
+        max-width: 90vw;
+    }
+    
+    .mission-text h3 {
+        font-size: 1rem;
+    }
+    
+    .mission-text p {
+        font-size: 0.8rem;
+    }
+    
+    .controls {
+        flex-direction: column;
+        gap: 10px;
+    }
+    
+    .timer-value {
+        font-size: 1.5rem;
+    }
+    
+    .modal-content {
+        padding: 30px 40px;
+    }
+    
+    .modal-content h2 {
+        font-size: 1.5rem;
+    }
+    
+    .modal-timer-value {
+        font-size: 3rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .memory-grid {
+        gap: 5px;
+    }
+    
+    .memory-card {
+        font-size: 1.5rem;
+        border-width: 2px;
+    }
+    
+    .card-icon {
+        font-size: 1.8rem;
+    }
+}

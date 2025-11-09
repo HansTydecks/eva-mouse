@@ -1,0 +1,317 @@
+/* Reset and Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+    min-height: 100vh;
+    color: #ffffff;
+}
+
+.container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Removed header and navigation styles */
+
+/* Main Content Layout */
+.main-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100vh;
+    justify-content: center;
+    gap: 20px;
+}
+
+/* Dominant Visualization */
+.visualization-container {
+    width: 90vw;
+    height: 60vh;
+    background: #1e1e2e;
+    border-radius: 20px;
+    padding: 20px;
+    position: relative;
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.5);
+    border: 2px solid #2d3748;
+}
+
+#visualizer {
+    width: 100%;
+    height: 100%;
+    background: #2d3748;
+    border-radius: 15px;
+}
+
+.target-line {
+    position: absolute;
+    left: 20px;
+    right: 20px;
+    height: 4px;
+    background: linear-gradient(90deg, var(--target-color, #ff6b6b), var(--target-color, #ff6b6b));
+    border-radius: 2px;
+    box-shadow: 0 0 15px var(--target-color, rgba(255, 107, 107, 0.8));
+    z-index: 10;
+    --target-note: 'C';
+    --target-color: #ff6b6b;
+    transition: all 0.5s ease;
+}
+
+.target-line::after {
+    content: var(--target-note, 'C');
+    position: absolute;
+    right: -30px;
+    top: -20px;
+    color: var(--target-color, #ff6b6b);
+    font-weight: bold;
+    font-size: 1.2rem;
+    background: rgba(30, 30, 46, 0.9);
+    padding: 4px 8px;
+    border-radius: 4px;
+    border: 1px solid #4a5568;
+}
+
+/* Minimal Controls */
+.controls {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.control-btn {
+    padding: 12px 25px;
+    border: 2px solid #4a90e2;
+    border-radius: 20px;
+    background: linear-gradient(45deg, #4a90e2, #357abd);
+    color: white;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 1rem;
+}
+
+.control-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(74, 144, 226, 0.4);
+    border-color: #5ba0f2;
+}
+
+.control-btn.recording {
+    background: linear-gradient(45deg, #48c774, #3ec46d);
+    border-color: #48c774;
+}
+
+.mic-status {
+    font-size: 0.9rem;
+    color: #cbd5e0;
+    font-weight: 500;
+}
+
+/* Mission Box */
+.mission-box {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    background: linear-gradient(135deg, #2d3748 0%, #4a5568 100%);
+    padding: 15px 25px;
+    border-radius: 12px;
+    border: 2px solid #4a90e2;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+/* Byte Companion */
+.byte-companion {
+    position: relative;
+}
+
+.byte-circle {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #4a90e2, #357abd);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 3px solid #5ba0f2;
+    box-shadow: 0 4px 12px rgba(74, 144, 226, 0.3);
+    transition: all 0.5s ease;
+}
+
+.byte-character {
+    width: 3rem;
+    height: 3rem;
+    object-fit: contain;
+    transition: all 0.3s ease;
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
+}
+
+/* Byte Happy State */
+.byte-companion.happy .byte-circle {
+    background: linear-gradient(135deg, #48c774, #3ec46d);
+    border-color: #5ed77e;
+    box-shadow: 0 4px 15px rgba(72, 199, 116, 0.5);
+    animation: byte-bounce 0.6s ease-in-out;
+}
+
+.byte-companion.happy .byte-character {
+    transform: scale(1.2);
+}
+
+@keyframes byte-bounce {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.15); }
+}
+
+.mission-text h3 {
+    margin: 0;
+    color: #ffffff;
+    font-size: 1.1rem;
+    font-weight: 600;
+}
+
+.mission-text p {
+    margin: 2px 0 0 0;
+    color: #cbd5e0;
+    font-size: 0.9rem;
+    line-height: 1.3;
+}
+
+/* Removed target zone styles - now integrated into main visualization */
+
+/* Removed processing and old output section styles */
+
+.frequency-display {
+    color: #ecf0f1;
+    font-family: 'Courier New', monospace;
+    font-size: 1.1rem;
+    margin-top: 10px;
+    font-weight: 600;
+}
+
+.success-message {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: linear-gradient(45deg, #48c774, #3ec46d);
+    color: white;
+    padding: 25px 50px;
+    border-radius: 15px;
+    font-weight: bold;
+    font-size: 1.8rem;
+    display: none;
+    z-index: 20;
+    box-shadow: 0 12px 40px rgba(72, 199, 116, 0.5);
+    border: 3px solid #5ed77e;
+    animation: celebration 0.8s ease-in-out;
+}
+
+.success-message.show {
+    display: block;
+}
+
+@keyframes celebration {
+    0% { transform: translate(-50%, -50%) scale(0.5); opacity: 0; }
+    50% { transform: translate(-50%, -50%) scale(1.2); }
+    100% { transform: translate(-50%, -50%) scale(1); opacity: 1; }
+}
+
+/* Removed info panel styles - replaced with minimal mission hint */
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+    .visualization-container {
+        width: 95vw;
+        height: 50vh;
+    }
+    
+    .mission-box {
+        flex-direction: column;
+        text-align: center;
+        gap: 10px;
+        margin-bottom: 15px;
+    }
+    
+    .mission-icon {
+        font-size: 1.5rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .container {
+        padding: 10px;
+    }
+    
+    .visualization-container {
+        width: 98vw;
+        height: 45vh;
+        padding: 15px;
+    }
+    
+    .mission-box {
+        padding: 12px 20px;
+        max-width: 90vw;
+    }
+    
+    .mission-text h3 {
+        font-size: 1rem;
+    }
+    
+    .mission-text p {
+        font-size: 0.8rem;
+    }
+    
+    .controls {
+        flex-direction: column;
+        gap: 10px;
+    }
+}
+
+/* Additional Animation Classes */
+.recording-active .microphone-icon {
+    color: #e74c3c;
+    animation: recording-pulse 1s infinite;
+}
+
+@keyframes recording-pulse {
+    0%, 100% { transform: scale(1); opacity: 1; }
+    50% { transform: scale(1.2); opacity: 0.7; }
+}
+
+.tone-matched {
+    animation: match-success 0.5s ease-in-out;
+}
+
+@keyframes match-success {
+    0% { background-color: transparent; }
+    50% { background-color: rgba(39, 174, 96, 0.3); }
+    100% { background-color: transparent; }
+}
+
+/* Mission completion celebration */
+.mission-completed {
+    animation: celebration-pulse 2s ease-in-out;
+}
+
+@keyframes celebration-pulse {
+    0%, 100% { filter: brightness(1); }
+    50% { filter: brightness(1.1); }
+}
+
+.mission-completed .eva-section {
+    animation: success-glow 1s ease-in-out;
+}
+
+@keyframes success-glow {
+    0% { box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1); }
+    50% { box-shadow: 0 8px 32px rgba(39, 174, 96, 0.3); }
+    100% { box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1); }
+}
